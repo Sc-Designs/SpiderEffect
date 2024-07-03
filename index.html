@@ -60,7 +60,7 @@ window.addEventListener('load', function() {
     console.log(loadTime)
     console.log(endTime)
     // Delay hiding the loading animation to match the load time
-    document.querySelector("#bar").style.animationDuration = loadTime + 's';
+    document.querySelector("#bar").style.animationDuration = (loadTime - 10) + 's';
     setTimeout(function() {
         document.querySelector("#load").style.top = '-100%';
     }, Math.max(0, loadTime)); // Convert seconds to milliseconds
