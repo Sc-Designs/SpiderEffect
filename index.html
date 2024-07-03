@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #bar{
+            animation: progress ease;
+        }
+        @keyframes progress {
+            from {
+                left: 80%;
+            }
+            to {
+                left: 30%;
+            }
+        }
+        #load{
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="load" style="height: 100vh; width:100vw; position:fixed; top:0; left:0; background:#000; display:flex; align-items:center; justify-content:center;">
+        <h1 style="color:#fff; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:5vw;">loading.....</h1>
+        <div id="bar" style="height: 30vh; width:50vw; background:linear-gradient(to right,#fff,transparent); position:absolute;"></div>
+    </div>
+    <div style="height: 100vh; width:100vw; overflow:hidden;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg" alt="">
+    </div>
+</body>
+<script>
+    const startTime = performance.now();
+
+// Wait for the page to fully load
+window.addEventListener('load', function() {
+    // Record the end time
+    const endTime = performance.now();
+    const loadTime = endTime - startTime;
+    console.log(startTime)
+    console.log(loadTime)
+    console.log(endTime)
+    // Delay hiding the loading animation to match the load time
+    document.querySelector("#bar").style.animationDuration = loadTime + 's';
+    setTimeout(function() {
+        document.querySelector("#load").style.top = '-100%';
+    }, Math.max(0, loadTime)); // Convert seconds to milliseconds
+});
+</script>
+</html>
